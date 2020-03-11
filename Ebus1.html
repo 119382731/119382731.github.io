@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Services</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<header>	
+		<div class="main">
+			<div class="logo">
+				<img src="logo.png">
+			</div>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="startbootstrap-resume-gh-pages\index.html">My CV</a></li>
+				<li><a href="interests.html">Interests</a></li>
+				<li><a href="about.html">About Consulting</a></li>
+				<li class="active"><a href="Ebus1.html">Services</a></li>
+			</ul>
+		</div>
+	</header>
+	<h2 align=center>Select a Consulting Service</h2>
+	
+	<form align= center>
+		<input type="radio" id="Hyper" name="service" value="200" onclick="if(this.checked){fHyper()}">
+		<label for="male">Hyperautomation @ $200</label><br>
+		<input type="radio" id="Multi" name="service" value="500" onclick="if(this.checked){fMulti()}">
+		<label for="male">Multiexperience @ $500</label><br>
+		<input type="radio" id="Dist" name="service" value="1000" onclick="if(this.checked){fDist()}">
+		<label for="male">Distributed Cloud @ $1000</label><br>
+	</form>		
+	<br>
+	<div align= center>
+	
+	Sub total <label id="subtotal">0</label>
+		
+	<br><br>
+	
+	Discount @ 5% <label id="discount">0</label>
+	
+	<br><br>
+	
+	VAT @ 20% <label id="vat">0</label>
+	
+	<br><br>
+	
+	Total <label id="total">0</label>
+	
+	<br><br>
+	
+	<button id="btnClear">Clear</button>
+	
+	</div>
+	
+	<script>
+	function fHyper(){
+	document.getElementById("subtotal").innerHTML = "200"
+	document.getElementById("discount").innerHTML = "10"
+	document.getElementById("vat").innerHTML = "38"
+	document.getElementById("total").innerHTML = "228"
+	}
+	</script>
+	<script>
+	function fMulti(){
+	document.getElementById("subtotal").innerHTML = "500"
+	document.getElementById("discount").innerHTML = "25"
+	document.getElementById("vat").innerHTML = "95"
+	document.getElementById("total").innerHTML = "570"
+	}
+	</script>
+	<script>
+	function fDist(){
+	document.getElementById("subtotal").innerHTML = "1000"
+	document.getElementById("discount").innerHTML = "50"
+	document.getElementById("vat").innerHTML = "190"
+	document.getElementById("total").innerHTML = "1140"
+	}
+	</script>
+	<script>
+	document.getElementById("btnClear").onclick = function fClear(){
+	document.getElementById("subtotal").innerHTML = "0"
+	document.getElementById("discount").innerHTML = "0"
+	document.getElementById("vat").innerHTML = "0"
+	document.getElementById("total").innerHTML = "0"
+	document.getElementById("Multi").checked = false
+	document.getElementById("Dist").checked = false
+	document.getElementById("Hyper").checked = false
+	}
+	
+	
+	</script>
+</body>
+</html>

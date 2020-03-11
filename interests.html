@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interests</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style type="text/css">
+    #scroller {
+        position: relative;
+    }
+    #scroller .innerScrollArea {
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    #scroller ul {
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+    #scroller li {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+	<header>	
+		<div class="main">
+			<div class="logo">
+				<img src="logo.png">
+			</div>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="startbootstrap-resume-gh-pages\index.html">My CV</a></li>
+				<li class="active"><a href="interests.html">Interests</a></li>
+				<li><a href="about.html">About Consulting</a></li>
+				<li><a href="Ebus1.html">Services</a></li>
+			</ul>
+		</div>
+	</header>
+	<div>
+		<div class="row2">
+			<div class="column2">
+			<h2 align=center style="color:white">Sports</h2>
+			<p>Sports have played a huge part in my life from a young age. Ive played many sports, but my favourite is hurling.<br>
+				Hurling plays a huge part in my community as it is a huge reason for the locals to get together.<br>
+				For me, sports is a means of escape. An escape from work, An escape from studies, An escape from life<br>
+				If I ever need a reason to blow off some steam or to clear my head, I'll pick up my hurley and sliotar <br> 
+				and head down to the local GAA pitch. The endorphins and freedom that come with playing sports are unmatched by <br>
+				any other aspect of my life.<br>
+				<br>
+				One of my greatest sporting memories is the North Cork Championship I won with Dromina 2 years ago.
+				It was played in Buttevant and was won by an insane Last minute goal scored by our full forward
+				to win the game by a single point. The icing on the cake of this victory was that the trophy was dedicated
+				to my grand father who had recently passed away. It is a memory I shall never forget.
+			</p>
+			</div>
+			<div class="column2">
+			<h2 align=center style="color:white">Travel</h2>
+			<p>Travelling is one of my favourite and most expensive hobbies. I have travelled to many places across the globe.
+				From America, to Kenya, to Italy and South Africa, I have been on mulitple journeys around the world. One of
+				my most treasured moments is my trip to Paris with my family. This was one of the last family holidays we had
+				before I left for college. We spent the week travelling through the capital of France enjoying the
+				cuisine and embracing the culture of the the french people.
+				<br>
+				
+			</p>
+			</div>
+		</div>	
+	</div>
+	<div id="scroller" style="width: 550px; height: 400px; margin: 0 auto;">
+    <div class="innerScrollArea">
+        <ul>
+            <!-- Define photos here -->
+            <li><img src="images/arc.jfif" width="auto" height="300" /></li>
+            <li><img src="images/bridge.jfif" width="auto" height="300" /></li>
+            <li><img src="images/eiffel.jfif" width="auto" height="300" /></li>
+            <li><img src="images/pyramid.jfif" width="auto" height="300" /></li>
+            <li><img src="images/hurling1.jfif" width="auto" height="300" /></li>
+            <li><img src="images/hurling2.jfif" width="auto" height="300" /></li>
+        </ul>
+    </div>
+</div>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var scroller = $('#scroller div.innerScrollArea');
+			var scrollerContent = scroller.children('ul');
+			scrollerContent.children().clone().appendTo(scrollerContent);
+			var curX = 0;
+			scrollerContent.children().each(function(){
+				var $this = $(this);
+				$this.css('left', curX);
+				curX += $this.outerWidth(true);
+			});
+			var fullW = curX / 2;
+			var viewportW = scroller.width();
+
+			// Scrolling speed management
+			var controller = {curSpeed:0, fullSpeed:2};
+			var $controller = $(controller);
+			var tweenToNewSpeed = function(newSpeed, duration)
+			{
+				if (duration === undefined)
+					duration = 150;
+				$controller.stop(true).animate({curSpeed:newSpeed}, duration);
+			};
+
+			// Pause on hover
+			scroller.hover(function(){
+				tweenToNewSpeed(0);
+			}, function(){
+				tweenToNewSpeed(controller.fullSpeed);
+			});
+
+			// Scrolling management; start the automatical scrolling
+			var doScroll = function()
+			{
+				var curX = scroller.scrollLeft();
+				var newX = curX + controller.curSpeed;
+				if (newX > fullW*2 - viewportW)
+					newX -= fullW;
+				scroller.scrollLeft(newX);
+			};
+			setInterval(doScroll, 20);
+			tweenToNewSpeed(controller.fullSpeed);
+		});
+	</script>
+</body>
+
+
+</html>
